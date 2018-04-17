@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { BusinessesComponent } from './businesses.component';
@@ -33,7 +34,7 @@ var routes = [
     BusinessComponent
   ],
   imports: [
-    BrowserModule, HttpModule, RouterModule.forRoot(routes)
+    BrowserModule, HttpModule, RouterModule.forRoot(routes), FormsModule, ReactiveFormsModule
   ],
   providers: [WebService],
   bootstrap: [AppComponent]

@@ -9,9 +9,12 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BusinessComponent {
   constructor(private webService: WebService, private route: ActivatedRoute) { };
+
+
   async ngOnInit() {
     var response = await this.webService.getBusiness(this.route.snapshot.params.id);
     this.business = response.json();
   }
-  business = { }
+
+  business = { };
 }

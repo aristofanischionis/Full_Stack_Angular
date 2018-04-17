@@ -1,11 +1,11 @@
 <div class="jumbotron">
-  <h1>We MEAN Business</h1>
+  <h1>We MEAN Business :)</h1>
 </div>
 
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-      <div *ngFor = "let business of business_list">
+      <div *ngFor = "let business of webService.business_list | async">
         <div class="card text-white bg-primary mb-3"
           [routerLink]="['/businesses', business._id]"
           style="cursor: pointer">
@@ -24,4 +24,12 @@
       </div>
     </div>  <!-- col -->
   </div>  <!-- row -->
+    <div class="row">
+      <div class="col-sm-6">
+        <button (click)="previousPage()">Previous</button>
+      </div>
+      <div class="col-sm-6 text-right">
+        <button (click)="nextPage()">Next</button>
+      </div>
+    </div>
   </div>  <!--  container  -->

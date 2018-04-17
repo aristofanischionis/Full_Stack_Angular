@@ -7,11 +7,26 @@ import { WebService } from './web.service';
 	styleUrls: ['./businesses.component.css']
 })
 export class BusinessesComponent {
-  constructor(private webService: WebService) { };
-  async ngOnInit() {
-    var response = await this.webService.getBusinesses();
-    this.business_list = response.json();
+  constructor(private webService: WebService) { }
+
+  ngOnInit() {
+    if (sessionStorage.start) {
+      this.start = sessionStorage.start;
+    }
+    this.webService.getBusinesses(this.start);
   }
-  business_list = [
-  ];
+  nextPage() {
+    this.start = Number(this.start) + 5;
+    sessionStorage.start = Number(this.start);
+    this.webService.getBusinesses(this.start);
+  }
+  previousPage() {
+    if (this.start > 0) {
+      this.start = Number(this.start) - 5;
+      sessionStorage.start = Number(this.start);
+      this.webService.getBusinesses(this.start);
+    }
+  }
+  start = 0;
+  business_list;
 }

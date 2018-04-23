@@ -1,5 +1,5 @@
 {
-  "name": "c1",
+  "name": "Profile Place",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -21,7 +21,8 @@
     "@angular/platform-browser": "^5.2.0",
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
-    "bootstrap": "4",
+    "auth0-js": "^9.4.2",
+    "bootstrap": "^4.1.0",
     "core-js": "^2.4.1",
     "jquery": "^3.3.1",
     "popper": "^1.0.1",

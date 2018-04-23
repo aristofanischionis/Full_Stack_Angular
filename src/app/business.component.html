@@ -59,10 +59,13 @@
       <option value="4">4 stars</option>
       <option value="5">5 stars</option>
     </select>
+    <br>
+    <button *ngIf="!isIncomplete()"
+      type="submit" class="btn btn-primary">Submit
+    </button>
+    <br>
   </div>
-  <button *ngIf="!isIncomplete()"
-    type="submit" class="btn btn-primary">Submit
-  </button>
+
 </form>
 
 <div class="container">

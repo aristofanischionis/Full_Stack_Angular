@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { WebService } from './web.service';
+import { AuthService } from './auth/auth.service';
 
 @Component({
 	selector: 'businesses',
@@ -7,7 +8,8 @@ import { WebService } from './web.service';
 	styleUrls: ['./businesses.component.css']
 })
 export class BusinessesComponent {
-  constructor(private webService: WebService) { }
+  constructor(private webService: WebService,
+              private authService: AuthService) { }
 
   ngOnInit() {
     if (sessionStorage.start) {

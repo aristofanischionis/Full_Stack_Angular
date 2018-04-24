@@ -18,6 +18,7 @@ export class AuthService {
   constructor(public router: Router) {}
 
   public login(): void {
+    sessionStorage.url = window.location.href;
     this.auth0.authorize();
   }
 
@@ -48,7 +49,7 @@ export class AuthService {
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
     // Go back to the home route
-    this.router.navigate(['/']);
+    //this.router.navigate(['/']);
   }
 
   public isAuthenticated(): boolean {

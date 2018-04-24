@@ -3,9 +3,10 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { AuthService } from './auth/auth.service';
 import { CallbackComponent } from './callback/callback.component';
-
+import { NavComponent } from './nav.component';
 import { AppComponent } from './app.component';
 import { BusinessesComponent } from './businesses.component';
 import { WebService } from './web.service';
@@ -39,7 +40,8 @@ var routes = [
     BusinessesComponent,
     HomeComponent,
     BusinessComponent,
-    CallbackComponent
+    CallbackComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule, HttpModule, RouterModule.forRoot(routes), FormsModule, ReactiveFormsModule

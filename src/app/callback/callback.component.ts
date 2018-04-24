@@ -10,6 +10,6 @@ import { Router } from '@angular/router';
 export class CallbackComponent {
   constructor(private router: Router) {}
   ngOnInit() {
-    this.router.navigate(['']);
+    window.location.href = sessionStorage.url;
   }
 }

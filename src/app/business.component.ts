@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { WebService } from './web.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from './auth/auth.service';
 
 @Component({
 	selector: 'business',
@@ -18,7 +19,8 @@ export class BusinessComponent {
   }
   constructor(private webService: WebService,
               private route: ActivatedRoute,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private authService: AuthService) {
 
   this.reviewForm = formBuilder.group(
     {name: ['', Validators.required],

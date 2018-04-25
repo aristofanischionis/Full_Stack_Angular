@@ -23,18 +23,18 @@
     </div>  <!-- col -->
   </div>  <!-- row -->
   </div>  <!--  container  -->
-  <span *ngIf = "authService.isAuthenticated()">
-<h2>Please review this business</h2>
-<form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" id="name"
-        class="form-control"
-        formControlName="name"
-        [ngClass]="{'error': isInvalid('name')}"
-        [(ngModel)]="review.name">
-  </div>
 
+  <span *ngIf = "authService.isAuthenticated()">
+    <h2>Please review this business</h2>
+    <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name"
+            class="form-control"
+            formControlName="name"
+            [ngClass]="{'error': isInvalid('name')}"
+            [(ngModel)]="review.name">
+      </div>
   <div class="form-group">
     <label for="review">Please leave your review below</label>
     <textarea id="review"
@@ -98,5 +98,6 @@
   </div>
 </div> <!--col -->
 </div>    <!--row -->
+
 </div> <!-- container -->
 

@@ -12,10 +12,10 @@ export class AuthService {
     responseType: 'token id_token',
     audience: 'https://aristofanis.eu.auth0.com/userinfo',
     redirectUri: 'http://localhost:4200/callback',
-    scope: 'openid'
+    scope: 'openid profile'
   });
 
-  constructor(public router: Router) {}
+  constructor(public router: Router) { }
 
   public login(): void {
     sessionStorage.url = window.location.href;
@@ -59,4 +59,20 @@ export class AuthService {
     return new Date().getTime() < expiresAt;
   }
 
+
+  userProfile: any;
+  public getProfile(cb): void {
+    const accessToken = localStorage.getItem('access_token');
+    if (!accessToken) {
+      throw new Error('Access Token must exist to fetch profile');
+    }
+
+    const self = this;
+    this.auth0.client.userInfo(accessToken, (err, profile) => {
+      if (profile) {
+        self.userProfile = profile;
+      }
+      cb(err, profile);
+    });
+  }
 }

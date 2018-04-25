@@ -22,7 +22,7 @@ export class WebService {
 
   getBusinesses(start){
     return this.http.get(
-      'http://localhost:3000/api/businesses?start='+start)
+      'http://localhost:3000/api/businesses?number=5&start='+start)
       .subscribe(response => {
         this.businesses_private_list = response.json();
         this.businessesSubject.next(this.businesses_private_list);

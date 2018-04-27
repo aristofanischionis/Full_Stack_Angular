@@ -8,25 +8,25 @@ import { AuthService } from './auth/auth.service';
 import { CallbackComponent } from './callback/callback.component';
 import { NavComponent } from './nav.component';
 import { AppComponent } from './app.component';
-import { BusinessesComponent } from './businesses.component';
+import { ProfilesComponent } from './Profiles.component';
 import { WebService } from './web.service';
 import { HomeComponent } from './home.component';
-import { BusinessComponent } from './business.component';
+import { ProfileComponent } from './Profile.component';
 
 
 
-var routes = [
+const routes = [
   {
     path: '',
     component: HomeComponent
   },
   {
-    path: 'businesses',
-    component: BusinessesComponent
+    path: 'Profiles',
+    component: ProfilesComponent
   },
   {
-    path: 'businesses/:id',
-    component: BusinessComponent
+    path: 'Profiles/:id',
+    component: ProfileComponent
   },
   {
     path: 'callback',
@@ -37,9 +37,9 @@ var routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    BusinessesComponent,
+    ProfilesComponent,
     HomeComponent,
-    BusinessComponent,
+    ProfileComponent,
     CallbackComponent,
     NavComponent
   ],

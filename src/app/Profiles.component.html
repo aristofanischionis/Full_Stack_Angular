@@ -1,0 +1,41 @@
+<div class="jumbotron">
+  <h1>Profile Place</h1>
+</div>
+
+<div class="container" style="margin-top:100px;">
+  <div class="row">
+    <div class="col-sm-4" *ngFor="let Profile of webService.Profiles_list | async">
+      <div class="card text-white bg-primary mb-3"
+           [routerLink]="['/Profiles', Profile._id]"
+           style="cursor: pointer">
+        <div class="card-header">
+          My name is:
+          {{ Profile.name }}
+          <link rel="icon" type="image/x-icon" href={{ Profile.avatar }}>
+        </div>
+        <div class="card-body">
+          My skills are:
+          {{ Profile.Skills }}
+        </div>
+        <div class="card-footer">
+          {{ Profile.reviews.votes.endorsed_by}} endorsed_by,
+          {{ Profile.reviews.votes.followed_by}} followed_by,
+          {{ Profile.reviews.votes.follows}} follows
+        </div>
+      </div>
+
+    </div>  <!-- col -->
+  </div>  <!-- row -->
+  <div>
+    <div class="row">
+      <div class="col-sm-6">
+        <button (click)="previousPage()">Previous</button>
+      </div>
+      <div class="col-sm-6 text-right">
+        <button (click)="nextPage()">Next</button>
+      </div>
+    </div>
+  </div>
+</div> <!-- container -->
+
+

@@ -12,6 +12,6 @@ export class CallbackComponent {
   ngOnInit() {
     window.setTimeout(function(){
       window.location.href = sessionStorage.url;
-    });
+    }, 700);
   }
 }

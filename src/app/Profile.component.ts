@@ -5,14 +5,14 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from './auth/auth.service';
 
 @Component({
-	selector: 'business',
-	templateUrl: './business.component.html',
-	styleUrls: ['./business.component.css']
+	selector: 'Profile',
+	templateUrl: './Profile.component.html',
+	styleUrls: ['./Profile.component.css']
 })
-export class BusinessComponent {
+export class ProfileComponent {
   reviewForm;
   review = {
-    businessID: '',
+    ProfileID: '',
     name: '',
     review: '',
     stars: 5
@@ -29,12 +29,12 @@ export class BusinessComponent {
   };
 
   async ngOnInit() {
-    this.webService.getBusiness(this.route.snapshot.params.id);
+    this.webService.getProfile(this.route.snapshot.params.id);
     this.webService.getReviews(this.route.snapshot.params.id);
   }
 
   onSubmit() {
-    this.review.businessID = this.webService.businessID;
+    this.review.ProfileID = this.webService.ProfileID;
     this.webService.postReview(this.review);
     this.reviewForm.reset();
   }

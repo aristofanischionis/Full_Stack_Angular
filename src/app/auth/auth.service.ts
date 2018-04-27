@@ -16,7 +16,7 @@ export class AuthService {
   });
 
   constructor(public router: Router) { }
-
+  userProfile: any;
   public login(): void {
     sessionStorage.url = window.location.href;
     this.auth0.authorize();
@@ -60,7 +60,6 @@ export class AuthService {
   }
 
 
-  userProfile: any;
   public getProfile(cb): void {
     const accessToken = localStorage.getItem('access_token');
     if (!accessToken) {

@@ -5,57 +5,57 @@ import { Subject } from 'rxjs/Rx';
 
 @Injectable()
 export class WebService {
-  businessID;
-  private businesses_private_list = [];
-  private businessesSubject = new Subject();
-  businesses_list = this.businessesSubject.asObservable();
+  ProfileID;
+  private Profiles_private_list = [];
+  private ProfilesSubject = new Subject();
+  Profiles_list = this.ProfilesSubject.asObservable();
 
-  private business_private_list = [];
-  private businessSubject = new Subject();
-  business = this.businessSubject.asObservable();
+  private Profile_private_list = [];
+  private ProfileSubject = new Subject();
+  Profile = this.ProfileSubject.asObservable();
 
   private reviews_private_list  = [];
   private reviewsSubject = new Subject();
   reviews = this.reviewsSubject.asObservable();
 
-  constructor(private http : Http) { };
+  constructor(private http: Http) { }
 
-  getBusinesses(start){
+  getProfiles(start) {
     return this.http.get(
-      'http://localhost:3000/api/businesses?number=5&start='+start)
+      'http://localhost:3000/api/Profiles?number=5&start=' + start)
       .subscribe(response => {
-        this.businesses_private_list = response.json();
-        this.businessesSubject.next(this.businesses_private_list);
+        this.Profiles_private_list = response.json();
+        this.ProfilesSubject.next(this.Profiles_private_list);
       });
   }
 
-  getBusiness(id){
-    return this.http.get('http://localhost:3000/api/businesses'+id)
+  getProfile(id){
+    return this.http.get('http://localhost:3000/api/Profiles' + id)
     .subscribe(response => {
-      this.business_private_list = response.json();
-      this.businessSubject.next(this.business_private_list);
-      this.businessID = id;
+      this.Profile_private_list = response.json();
+      this.ProfileSubject.next(this.Profile_private_list);
+      this.ProfileID = id;
     });
   }
 
   getReviews(id) {
     return this.http.get(
-      'http://localhost:3000/api/businesses/' + id + '/reviews')
+      'http://localhost:3000/api/Profiles/' + id + '/reviews')
       .subscribe(response => {
         this.reviews_private_list = response.json();
         this.reviewsSubject.next(this.reviews_private_list);
-      })
-    }
+      });
+    };
 
     postReview(review) {
-      let urlSearchParams = new URLSearchParams();
+      const urlSearchParams = new URLSearchParams();
       urlSearchParams.append('username', review.name);
       urlSearchParams.append('text', review.review);
       urlSearchParams.append('stars', review.stars);
-      this.http.post("http://localhost:3000/api/businesses/" +
-        review.businessID + "/reviews", urlSearchParams)
+      this.http.post("http://localhost:3000/api/Profiles/" +
+        review.ProfileID + "/reviews", urlSearchParams)
           .subscribe(response => {
-            this.getReviews(review.businessID);
-          })
+            this.getReviews(review.ProfileID);
+          });
       }
 }

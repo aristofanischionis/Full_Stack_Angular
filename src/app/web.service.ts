@@ -30,6 +30,10 @@ export class WebService {
       });
   }
 
+  isLastPage(start){
+    return this.http.get(
+      'http://localhost:3000/api/Profiles?number=4&start=' + start);
+  }
   getProfile(id){
     return this.http.get('http://localhost:3000/api/Profiles/' + id)
     .subscribe(response => {

@@ -29,6 +29,22 @@ export class ProfilesComponent {
       this.webService.getProfiles(this.start);
     }
   }
+  isFirstPage() {
+    this.start = Number(this.start);
+    if(this.start = 0){
+      console.log("this start =0");
+      return true;
+    }
+    else return false;
+  }
+  isLastPage() {
+    this.start = Number(this.start);
+    if(!this.webService.isLastPage(this.start).count()){
+      console.log("not any more results");
+      return false;
+    }
+    else return true;
+  }
   start = 0;
   Profile_list;
 }

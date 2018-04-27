@@ -4,6 +4,7 @@
 <div class="container" style="margin-top:100px;">
   <div class="row">
     <div class="col-sm-12" *ngFor="let Profile of webService.Profile | async">
+        <div>
       <div class="card text-white bg-primary mb-3">
         <div class="card-header"> <!--what appears on each profile when clicked-->
             My name is
@@ -29,14 +30,15 @@
         </div>
       </div>
     </div>
+    </div>
   </div>
 </div>
 
 <span *ngIf="authService.isAuthenticated()">
-    <h2>Please review this Profile</h2>
+    <h2 style="text-align: center">Please review this Profile</h2>
     <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <label for="name">Name</label>
+        <label for="name" >Name</label>
         <input type="text" id="name"
                class="form-control"
                formControlName="name"
@@ -44,7 +46,7 @@
                [(ngModel)]="review.name">
       </div>
   <div class="form-group">
-    <label for="review">Please leave your review below</label>
+    <label for="review" style="text-align: center">Please leave your review below</label>
     <textarea id="review"
               rows="3" name="review"
               class="form-control"
@@ -55,7 +57,7 @@
   </div>
 
   <div class="form-group">
-    <label for="stars">Please provide a rating (5 = best)</label>
+    <label for="stars" style="text-align: center">Please provide a rating (5 = best)</label>
     <select id="stars"
             name="stars"
             class="form-control"
@@ -69,7 +71,7 @@
     </select>
     <br>
     <button *ngIf="!isIncomplete()"
-            type="submit" class="btn btn-primary">Submit
+            type="submit" class="btn btn-primary active" style="text-align: center">Submit
     </button>
     <br>
   </div>
@@ -78,7 +80,13 @@
 
 <span *ngIf="!authService.isAuthenticated()">
   <h5 class="text-primary">
-    <p class="text-justify">Please log in to leave a review for this Profile</p>
+    <p class="text-justify" style="text-align: center">
+        Please
+        <button class="btn btn-link"
+        *ngIf="!authService.isAuthenticated()"
+        (click)="authService.login()">log in</button>
+        to leave a review for this Profile!
+    </p>
   </h5>
 </span>
 

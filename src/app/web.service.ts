@@ -22,9 +22,10 @@ export class WebService {
 
   getProfiles(start) {
     return this.http.get(
-      'http://localhost:3000/api/Profiles?number=5&start=' + start)
+      'http://localhost:3000/api/Profiles?number=4&start=' + start)
       .subscribe(response => {
         this.Profiles_private_list = response.json();
+        console.log(this.Profiles_private_list);
         this.ProfilesSubject.next(this.Profiles_private_list);
       });
   }

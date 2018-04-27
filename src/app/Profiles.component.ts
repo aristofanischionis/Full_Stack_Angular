@@ -18,13 +18,13 @@ export class ProfilesComponent {
     this.webService.getProfiles(this.start);
   }
   nextPage() {
-    this.start = Number(this.start) + 5;
+    this.start = Number(this.start) + 4;
     sessionStorage.start = Number(this.start);
     this.webService.getProfiles(this.start);
   }
   previousPage() {
     if (this.start > 0) {
-      this.start = Number(this.start) - 5;
+      this.start = Number(this.start) - 4;
       sessionStorage.start = Number(this.start);
       this.webService.getProfiles(this.start);
     }

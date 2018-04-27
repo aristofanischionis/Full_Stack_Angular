@@ -25,15 +25,16 @@ export class WebService {
       'http://localhost:3000/api/Profiles?number=4&start=' + start)
       .subscribe(response => {
         this.Profiles_private_list = response.json();
-        console.log(this.Profiles_private_list);
+        //console.log(this.Profiles_private_list);
         this.ProfilesSubject.next(this.Profiles_private_list);
       });
   }
 
   getProfile(id){
-    return this.http.get('http://localhost:3000/api/Profiles' + id)
+    return this.http.get('http://localhost:3000/api/Profiles/' + id)
     .subscribe(response => {
       this.Profile_private_list = response.json();
+      //console.log(this.Profile_private_list);
       this.ProfileSubject.next(this.Profile_private_list);
       this.ProfileID = id;
     });
@@ -44,6 +45,7 @@ export class WebService {
       'http://localhost:3000/api/Profiles/' + id + '/reviews')
       .subscribe(response => {
         this.reviews_private_list = response.json();
+        console.log(this.reviews_private_list);
         this.reviewsSubject.next(this.reviews_private_list);
       });
     };

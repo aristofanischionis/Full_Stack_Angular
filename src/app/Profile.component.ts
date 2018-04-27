@@ -31,6 +31,7 @@ export class ProfileComponent {
   async ngOnInit() {
     this.webService.getProfile(this.route.snapshot.params.id);
     this.webService.getReviews(this.route.snapshot.params.id);
+
   }
 
   onSubmit() {
